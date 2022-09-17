@@ -43,7 +43,7 @@ void createImageGrid(QGridLayout *layout){
         QPushButton *button = createButton(filePath);
         int grid_size = 3;
         int row = i % grid_size;
-        int col = floor(i / grid_size);
+        int col = i / grid_size;
         layout->addWidget(button, row, col);
     }
 }
