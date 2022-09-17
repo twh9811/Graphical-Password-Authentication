@@ -10,6 +10,8 @@
 #include <QIcon>
 #include <QString>
 #include <QGridLayout>
+#include <QHash>
+#include <QHashIterator>
 
 std::vector<QString> setUpFileVector() {
     std::vector<QString> filePathVector;
@@ -35,14 +37,24 @@ QPushButton* createButton(QString filePath) {
     return button;
 }
 
+std::vector<QPushButton*> createAllButtons() {
+    std::vector<QPushButton*> buttonVector;
+    for(int i=0; i<filePaths.size(); i++) {
+        QString filePath = filePaths[i];
+        QPushButton *button = createButton(filePath);
+        buttonVector.push_back(button);
+    }
+    return buttonVector;
+}
+
 void createImageGrid(QGridLayout *layout){
     srand(time(NULL));
     int grid_size = 3;
     int grid_area = grid_size * grid_size;
+    std::vector<QPushButton*> allButtons = createAllButtons();
     for(int i=0; i<grid_area; i++){
-        int randomIndex = rand() % filePaths.size();
-        QString filePath = filePaths[randomIndex];
-        QPushButton *button = createButton(filePath);
+        int randomIndex = rand() % allButtons.size();
+        QPushButton* button = allButtons[randomIndex];
         int row = i % grid_size;
         int col = i / grid_size;
         layout->addWidget(button, row, col);
