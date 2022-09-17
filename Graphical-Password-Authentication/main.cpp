@@ -34,6 +34,7 @@ QPushButton* createButton(QString filePath) {
     button->setIcon(icon);
     QSize standardSize(100,100);
     button->setIconSize(standardSize);
+    button->setCheckable(true);
     return button;
 }
 
@@ -50,6 +51,9 @@ void createImageGrid(QGridLayout *layout){
         int col = i / grid_size;
         layout->addWidget(button, row, col);
     }
+
+    QPushButton *button = new QPushButton("Submit");
+    layout->addWidget(button, 4, 1);
 }
 
 int main(int argc, char *argv[])
