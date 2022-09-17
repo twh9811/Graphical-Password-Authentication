@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 
-#include <list>
+#include <vector>
 #include <iostream>
 
 #include <QApplication>
@@ -8,6 +8,23 @@
 #include <QPixmap>
 #include <QIcon>
 #include <QString>
+#include <QGridLayout>
+
+std::vector<QString> setUpFileVector() {
+    std::vector<QString> filePathVector;
+
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\Dame.jpg");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\damoins_morgan.png");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\d o n a l d.png");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\Dame.jpg");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\damoins_morgan.png");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\d o n a l d.png");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\Dame.jpg");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\damoins_morgan.png");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\d o n a l d.png");
+
+    return filePathVector;
+}
 
 QPushButton* createButton(QString filePath) {
     QPushButton *button = new QPushButton("");
@@ -19,16 +36,29 @@ QPushButton* createButton(QString filePath) {
     return button;
 }
 
+void createImageGrid(QGridLayout *layout){
+    std::vector<QString> filePaths = setUpFileVector();
+    for(int i=0; i<filePaths.size(); i++){
+        QString filePath = filePaths[i];
+        QPushButton *button = createButton(filePath);
+        int grid_size = 3;
+        int row = i % grid_size;
+        int col = floor(i / grid_size);
+        layout->addWidget(button, row, col);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
 
-    std::list<QString> testList;
-    testList.push_front("C:\\Users\\Owner\\Desktop\\Memes\\Dame.jpg");
-    QPushButton *firstTestButton = createButton(testList.front());
-    firstTestButton->show();
-    w.show();
+    QWidget *window = new QWidget();
+    QGridLayout *layout = new QGridLayout();
+    createImageGrid(layout);
+
+    window->setLayout(layout);
+    window->show();
     return a.exec();
 }
 
