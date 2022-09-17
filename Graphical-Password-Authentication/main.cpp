@@ -17,15 +17,13 @@ std::vector<QString> setUpFileVector() {
     filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\Dame.jpg");
     filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\damoins_morgan.png");
     filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\d o n a l d.png");
-    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\Dame.jpg");
-    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\damoins_morgan.png");
-    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\d o n a l d.png");
-    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\Dame.jpg");
-    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\damoins_morgan.png");
-    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\d o n a l d.png");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\damon.png");
+    filePathVector.push_back("C:\\Users\\Owner\\Desktop\\Memes\\drippy.png");
 
     return filePathVector;
 }
+
+std::vector<QString> filePaths = setUpFileVector();
 
 QPushButton* createButton(QString filePath) {
     QPushButton *button = new QPushButton("");
@@ -38,13 +36,13 @@ QPushButton* createButton(QString filePath) {
 }
 
 void createImageGrid(QGridLayout *layout){
-    std::vector<QString> filePaths = setUpFileVector();
     srand(time(NULL));
-    for(int i=0; i<filePaths.size(); i++){
+    int grid_size = 3;
+    int grid_area = grid_size * grid_size;
+    for(int i=0; i<grid_area; i++){
         int randomIndex = rand() % filePaths.size();
         QString filePath = filePaths[randomIndex];
         QPushButton *button = createButton(filePath);
-        int grid_size = 3;
         int row = i % grid_size;
         int col = i / grid_size;
         layout->addWidget(button, row, col);
