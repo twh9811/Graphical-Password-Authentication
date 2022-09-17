@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include <time.h>
 
 #include <vector>
 #include <iostream>
@@ -38,8 +39,10 @@ QPushButton* createButton(QString filePath) {
 
 void createImageGrid(QGridLayout *layout){
     std::vector<QString> filePaths = setUpFileVector();
+    srand(time(NULL));
     for(int i=0; i<filePaths.size(); i++){
-        QString filePath = filePaths[i];
+        int randomIndex = rand() % filePaths.size();
+        QString filePath = filePaths[randomIndex];
         QPushButton *button = createButton(filePath);
         int grid_size = 3;
         int row = i % grid_size;
