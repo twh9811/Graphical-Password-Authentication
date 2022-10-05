@@ -1,0 +1,16 @@
+# ninja log v5
+1	742	6866911408333422	Graphical-Password-Authentication_autogen/timestamp	24650a87388eef9a
+1	742	6866911408333422	Graphical-Password-Authentication_autogen/mocs_compilation.cpp	24650a87388eef9a
+1	742	6866911408333422	C:/Users/travi/Desktop/Graphical-Password-Authentication/build-Graphical-Password-Authentication-Desktop_Qt_6_3_2_MinGW_64_bit-Debug/Graphical-Password-Authentication_autogen/timestamp	24650a87388eef9a
+1	742	6866911408333422	C:/Users/travi/Desktop/Graphical-Password-Authentication/build-Graphical-Password-Authentication-Desktop_Qt_6_3_2_MinGW_64_bit-Debug/Graphical-Password-Authentication_autogen/mocs_compilation.cpp	24650a87388eef9a
+745	2260	6866911424769454	CMakeFiles/Graphical-Password-Authentication.dir/Graphical-Password-Authentication_autogen/mocs_compilation.cpp.obj	9f909d16d57100e3
+747	2314	6866911425308431	CMakeFiles/Graphical-Password-Authentication.dir/mainwindow.cpp.obj	6d45d51a14664ed2
+742	2425	6866911426425436	CMakeFiles/Graphical-Password-Authentication.dir/main.cpp.obj	93afaf8cd72e287
+2425	2641	6866911428547640	Graphical-Password-Authentication.exe	ef72599bc3e6aeb4
+9	188	6866911649719278	Graphical-Password-Authentication_autogen/timestamp	24650a87388eef9a
+9	188	6866911649719278	Graphical-Password-Authentication_autogen/mocs_compilation.cpp	24650a87388eef9a
+9	188	6866911649719278	C:/Users/travi/Desktop/Graphical-Password-Authentication/build-Graphical-Password-Authentication-Desktop_Qt_6_3_2_MinGW_64_bit-Debug/Graphical-Password-Authentication_autogen/timestamp	24650a87388eef9a
+9	188	6866911649719278	C:/Users/travi/Desktop/Graphical-Password-Authentication/build-Graphical-Password-Authentication-Desktop_Qt_6_3_2_MinGW_64_bit-Debug/Graphical-Password-Authentication_autogen/mocs_compilation.cpp	24650a87388eef9a
+198	1808	6866911665905874	CMakeFiles/Graphical-Password-Authentication.dir/mainwindow.cpp.obj	6d45d51a14664ed2
+196	3751	6866911685334232	CMakeFiles/Graphical-Password-Authentication.dir/main.cpp.obj	93afaf8cd72e287
+3753	3925	6866911687049672	Graphical-Password-Authentication.exe	ef72599bc3e6aeb4

@@ -12,6 +12,7 @@
 #include <QGridLayout>
 #include <QHash>
 #include <QHashIterator>
+#include <QtNetwork>
 
 std::vector<QString> setUpFileVector() {
     std::vector<QString> filePathVector;
