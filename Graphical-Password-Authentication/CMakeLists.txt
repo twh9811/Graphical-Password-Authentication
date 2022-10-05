@@ -23,6 +23,7 @@ set(PROJECT_SOURCES
         mainwindow.ui
         #Build imageDownloader with project
         imageDownloader.h
+        imageDownloader.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

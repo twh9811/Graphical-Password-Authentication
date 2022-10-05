@@ -2,19 +2,19 @@
 #define IMAGEDOWNLOADER_H
 
 #include <QByteArray>
-#include <QString>
-#include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
+#include <QPixmap>
 
 //Variables
 QByteArray downloadedData;
-QNetworkAccessManager webManager;
+QNetworkAccessManager* webManager;
 QNetworkRequest webRequest;
-QNetworkReply webReply;
+QNetworkReply* webReply;
 
 //Functions
 QByteArray getImageFromWeb(QString imageURL);
+QPixmap turnBytesIntoPixmap(QByteArray imageBytes);
 
 #endif // IMAGEDOWNLOADER_H
