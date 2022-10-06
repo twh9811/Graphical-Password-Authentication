@@ -4,8 +4,6 @@
 #include <vector>
 #include <iostream>
 
-#include <imageDownloader.h>
-
 #include <QApplication>
 #include <QPushButton>
 #include <QPixmap>
@@ -15,6 +13,8 @@
 #include <QHash>
 #include <QHashIterator>
 #include <QtNetwork>
+
+#include <imageDownloader.h>
 
 std::vector<QString> setUpFileVector() {
     std::vector<QString> filePathVector;
@@ -41,6 +41,15 @@ QPushButton* createButton(QString filePath) {
     return button;
 }
 
+
+QPixmap turnBytesIntoPixmap() {
+    QUrl imageUrl("https://imgs.search.brave.com/9DB_auwysvt5y-0zp4jPu4fKGA9n37hRJ8CtwxgDErI/rs:fit:1024:768:1/g:ce/aHR0cHM6Ly8yLmJw/LmJsb2dzcG90LmNv/bS8tX29IRm0xTkFG/Nm8vVDBrQmItTjZl/MEkvQUFBQUFBQUFD/ZjgveVEwU2x5Slhn/ZlEvczE2MDAvdHJl/ZS1waWN0dXJlLS5q/cGc");
+    QByteArray imageBytes = getImageFromWeb(imageUrl);
+    QPixmap finalImage;
+    finalImage.loadFromData(imageBytes);
+    return finalImage;
+}
+
 void createImageGrid(QGridLayout *layout){
     srand(time(NULL));
     int grid_size = 3;
@@ -57,11 +66,6 @@ void createImageGrid(QGridLayout *layout){
 
     QPushButton *button = new QPushButton("Submit");
     layout->addWidget(button, grid_size+1, grid_size-1);
-}
-
-QPixmap turnBytesIntoPixmap(QByteArray imageBytes) {
-    finalImage.loadFromData(imageBytes);
-    return finalImage;
 }
 
 int main(int argc, char *argv[])
