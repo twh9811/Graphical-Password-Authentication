@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 
+#include <imageDownloader.h>
+
 #include <QApplication>
 #include <QPushButton>
 #include <QPixmap>
@@ -55,6 +57,11 @@ void createImageGrid(QGridLayout *layout){
 
     QPushButton *button = new QPushButton("Submit");
     layout->addWidget(button, grid_size+1, grid_size-1);
+}
+
+QPixmap turnBytesIntoPixmap(QByteArray imageBytes) {
+    finalImage.loadFromData(imageBytes);
+    return finalImage;
 }
 
 int main(int argc, char *argv[])

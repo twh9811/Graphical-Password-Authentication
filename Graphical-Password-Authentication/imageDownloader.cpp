@@ -1,10 +1,9 @@
 #include <imageDownloader.h>
 
-QByteArray getImageFromWeb(QString imageURL) {
-    QNetworkAccessManager* webManager = new QNetworkAccessManager();
-    webManager->
+QByteArray getImageFromWeb(QUrl url) {
+    webManager = new QNetworkAccessManager();
+    webRequest.setUrl(url);
+    webReply = webManager->get(webRequest);
+    return webReply->readAll();
 }
 
-QPixmap turnBytesIntoPixmap(QByteArray imageBytes) {
-
-}
