@@ -1,9 +1,9 @@
 #ifndef IMAGEDOWNLOADER_H
 #define IMAGEDOWNLOADER_H
 
-#include <QByteArray>
+#include <QPixmap>
 #include <QUrl>
 
-QByteArray getImageFromWeb(QUrl url);
+QPixmap getImageFromWeb(QUrl url);
 
 #endif // IMAGEDOWNLOADER_H

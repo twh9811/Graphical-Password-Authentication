@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include <time.h>
+#include "imageDownloader.h"
 
 #include <vector>
 #include <iostream>
@@ -42,30 +43,40 @@ QPushButton* createButton(QString filePath) {
 }
 
 
-QPixmap turnBytesIntoPixmap() {
-    QUrl imageUrl("https://imgs.search.brave.com/9DB_auwysvt5y-0zp4jPu4fKGA9n37hRJ8CtwxgDErI/rs:fit:1024:768:1/g:ce/aHR0cHM6Ly8yLmJw/LmJsb2dzcG90LmNv/bS8tX29IRm0xTkFG/Nm8vVDBrQmItTjZl/MEkvQUFBQUFBQUFD/ZjgveVEwU2x5Slhn/ZlEvczE2MDAvdHJl/ZS1waWN0dXJlLS5q/cGc");
-    QByteArray imageBytes = getImageFromWeb(imageUrl);
-    QPixmap finalImage;
-    finalImage.loadFromData(imageBytes);
-    return finalImage;
-}
+//QPixmap turnBytesIntoPixmap() {
+
+//    QByteArray imageBytes = getImageFromWeb(imageUrl);
+//    QPixmap finalImage;
+//    finalImage.loadFromData(imageBytes);
+//    return finalImage;
+//}
 
 void createImageGrid(QGridLayout *layout){
     srand(time(NULL));
     int grid_size = 3;
     int grid_area = grid_size * grid_size;
 
-    for(int i=0; i<grid_area; i++){
-        int randomIndex = rand() % filePaths.size();
-        QString filePath = filePaths[randomIndex];
-        QPushButton *button = createButton(filePath);
-        int row = i % grid_size;
-        int col = i / grid_size;
-        layout->addWidget(button, row, col);
-    }
+//    for(int i=0; i<grid_area; i++){
+//        int randomIndex = rand() % filePaths.size();
+//        QString filePath = filePaths[randomIndex];
+//        QPushButton *button = createButton(filePath);
+//        int row = i % grid_size;
+//        int col = i / grid_size;
+//        layout->addWidget(button, row, col);
+//    }
 
-    QPushButton *button = new QPushButton("Submit");
-    layout->addWidget(button, grid_size+1, grid_size-1);
+    QUrl imageUrl("https://imgs.search.brave.com/9DB_auwysvt5y-0zp4jPu4fKGA9n37hRJ8CtwxgDErI/rs:fit:1024:768:1/g:ce/aHR0cHM6Ly8yLmJw/LmJsb2dzcG90LmNv/bS8tX29IRm0xTkFG/Nm8vVDBrQmItTjZl/MEkvQUFBQUFBQUFD/ZjgveVEwU2x5Slhn/ZlEvczE2MDAvdHJl/ZS1waWN0dXJlLS5q/cGc");
+    QPixmap image = getImageFromWeb(imageUrl);
+    QIcon icon(image);
+    QPushButton *buttonTest = new QPushButton("");
+    buttonTest->setIcon(icon);
+    QSize standardSize(100,100);
+    buttonTest->setIconSize(standardSize);
+    buttonTest->setCheckable(true);
+    layout->addWidget(buttonTest);
+
+//    QPushButton *button = new QPushButton("Submit");
+//    layout->addWidget(button, grid_size+1, grid_size-1);
 }
 
 int main(int argc, char *argv[])
