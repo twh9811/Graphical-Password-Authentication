@@ -45,15 +45,14 @@ QString GetHTML(std::string topic) {
 
 std::vector<QString> getImageAddresses(QString html) {
     std::vector<QString> imageAddresses;
-    int index = html.indexOf("class=\"images_table\"");
-    index = html.indexOf("<img", index);
+    int index = html.indexOf("\"ou\"");
     while(index >= 0) {
-        index = html.indexOf("src=\"", index);
-        index = index + 5;
+        index = html.indexOf("\"", index+4);
+        index++;
         int index2 = html.indexOf("\"", index);
         QString parsedImageURL = html.mid(index, index2-index);
         imageAddresses.push_back(parsedImageURL);
-        index = html.indexOf("<img", index);
+        index = html.indexOf("\"ou\"", index2);
     }
     return imageAddresses;
 }

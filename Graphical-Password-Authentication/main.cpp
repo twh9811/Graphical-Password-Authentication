@@ -50,10 +50,11 @@ void createImageGrid(QGridLayout *layout){
     for(int i=0; i<grid_area; i++){
         std::string topic = selectTopic(topics);
         QString html = GetHTML(topic);
-        qDebug(html.toLatin1());
+//        qDebug(html.toLatin1());
         std::vector<QString> imageAddresses = getImageAddresses(html);
         int randomIndex = rand() % imageAddresses.size();
         QString picURL = imageAddresses[randomIndex];
+        qDebug(picURL.toLatin1());
         QPushButton *button = createButton(picURL);
         int row = i % grid_size;
         int col = i / grid_size;
