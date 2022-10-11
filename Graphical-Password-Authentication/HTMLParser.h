@@ -3,8 +3,9 @@
 
 #include <string>
 #include <vector>
+#include <QString>
 
-std::string GetHTML();
+QString GetHTML();
 std::vector<std::string> setUpTopics();
 std::string selectTopic(std::vector<std::string> topicVector);
 

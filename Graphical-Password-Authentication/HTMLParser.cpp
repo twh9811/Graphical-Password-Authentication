@@ -1,5 +1,11 @@
 #include "HTMLParser.h"
+#include "qpixmap.h"
 #include <vector>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QEventLoop>
 
 std::vector<std::string> setUpTopics() {
     std::vector<std::string> topicVector;
@@ -18,8 +24,21 @@ std::string selectTopic(std::vector<std::string> topicVector) {
     return topic;
 }
 
-std::string GetHTML() {
+QString GetHTML(std::string topic) {
+    QEventLoop loop;
+    QNetworkAccessManager *webManager = new QNetworkAccessManager();
 
+    QNetworkRequest webRequest;
+    QUrl urlRequest = QUrl(QString::fromStdString("https://www.google.com/search?q=" + topic + "&tbm=isch"));
+    webRequest.setUrl(urlRequest);
+
+    QNetworkReply *webReply = webManager->get(webRequest);
+
+
+    QObject::connect(webReply,SIGNAL(finished()),&loop,SLOT(quit()));
+    loop.exec();
+
+    QString html = webReply->readAll();
+
+    return html;
 }
-
-
