@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-c96d88db549f3649f7d0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Graphical-Password-Authentication",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Graphical-Password-Authentication::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Graphical-Password-Authentication-Debug-d1bb97dda13726b990f2.json",
+					"name" : "Graphical-Password-Authentication",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Graphical-Password-Authentication_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Graphical-Password-Authentication_autogen-Debug-30a581e7b4170f7fb2fa.json",
+					"name" : "Graphical-Password-Authentication_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Graphical-Password-Authentication_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Graphical-Password-Authentication_autogen_timestamp_deps-Debug-f6d633e340b0b1f6817e.json",
+					"name" : "Graphical-Password-Authentication_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/QT/Graphical-Password-Authentication/build-Graphical-Password-Authentication-Desktop_Qt_6_3_2_MinGW_64_bit-Debug",
+		"source" : "D:/QT/Graphical-Password-Authentication/Graphical-Password-Authentication"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

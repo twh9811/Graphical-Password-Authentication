@@ -47,10 +47,10 @@ void createImageGrid(QGridLayout *layout){
     int grid_area = grid_size * grid_size;
 
     std::vector<std::string> topics = setUpTopics();
-
     for(int i=0; i<grid_area; i++){
         std::string topic = selectTopic(topics);
         QString html = GetHTML(topic);
+        qDebug(html.toLatin1());
         std::vector<QString> imageAddresses = getImageAddresses(html);
         int randomIndex = rand() % imageAddresses.size();
         QString picURL = imageAddresses[randomIndex];

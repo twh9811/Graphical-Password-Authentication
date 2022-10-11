@@ -1,4 +1,5 @@
 #include "HTMLParser.h"
+#include <iostream>
 #include <vector>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
@@ -33,7 +34,8 @@ QString GetHTML(std::string topic) {
     QNetworkReply *webReply = webManager->get(webRequest);
 
 
-    QObject::connect(webReply,SIGNAL(finished()),&loop,SLOT(quit()));
+    auto status = QObject::connect(webReply,SIGNAL(finished()),&loop,SLOT(quit()));
+    qDebug() << "Connection status:" << status;
     loop.exec();
 
     QString html = webReply->readAll();
@@ -45,7 +47,6 @@ std::vector<QString> getImageAddresses(QString html) {
     std::vector<QString> imageAddresses;
     int index = html.indexOf("class=\"images_table\"");
     index = html.indexOf("<img", index);
-
     while(index >= 0) {
         index = html.indexOf("src=\"", index);
         index = index + 5;
