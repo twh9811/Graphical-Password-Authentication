@@ -1,5 +1,4 @@
 #include "HTMLParser.h"
-#include <iostream>
 #include <vector>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
@@ -45,14 +44,14 @@ QString GetHTML(std::string topic) {
 
 std::vector<QString> getImageAddresses(QString html) {
     std::vector<QString> imageAddresses;
-    int index = html.indexOf("\"ou\"");
+    int index = 0;
     while(index >= 0) {
-        index = html.indexOf("\"", index+4);
-        index++;
+        index = html.indexOf("src=\"https", index);
+        index = index + 5;
         int index2 = html.indexOf("\"", index);
         QString parsedImageURL = html.mid(index, index2-index);
         imageAddresses.push_back(parsedImageURL);
-        index = html.indexOf("\"ou\"", index2);
+        index = html.indexOf("<img", index);
     }
     return imageAddresses;
 }
