@@ -24,7 +24,6 @@ std::vector<QUrl> setUpFileVector() {
     QUrl imageUrl4("https://imgs.search.brave.com/iU7B7kHMIitsqTdMrXAxGFY6_wn8i7XQ4AX4h8_HXSE/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMxLmhvdGNhcnNp/bWFnZXMuY29tL3dv/cmRwcmVzcy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMC8wNC9j/YXJzLXRvLW1vZGlm/eS5qcGc");
     filePathVector.push_back(imageUrl4);
 
-
     return filePathVector;
 }
 

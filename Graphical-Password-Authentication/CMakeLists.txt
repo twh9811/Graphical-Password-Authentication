@@ -24,6 +24,9 @@ set(PROJECT_SOURCES
         #Build imageDownloader with project
         imageDownloader.cpp
         imageDownloader.h
+        #Build HTMLParser with project
+        HTMLParser.cpp
+        HTMLParser.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
