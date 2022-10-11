@@ -5,7 +5,7 @@
 #include <vector>
 #include <QString>
 
-QString GetHTML();
+QString GetHTML(std::string topic);
 std::vector<QString> getImageAddresses(QString html);
 std::vector<std::string> setUpTopics();
 std::string selectTopic(std::vector<std::string> topicVector);

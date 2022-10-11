@@ -1,5 +1,4 @@
 #include "HTMLParser.h"
-#include "qpixmap.h"
 #include <vector>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
@@ -27,7 +26,6 @@ std::string selectTopic(std::vector<std::string> topicVector) {
 QString GetHTML(std::string topic) {
     QEventLoop loop;
     QNetworkAccessManager *webManager = new QNetworkAccessManager();
-
     QNetworkRequest webRequest;
     QUrl urlRequest = QUrl(QString::fromStdString("https://www.google.com/search?q=" + topic + "&tbm=isch"));
     webRequest.setUrl(urlRequest);

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <time.h>
 #include "imageDownloader.h"
+#include "HTMLParser.h"
 
 #include <vector>
 #include <iostream>
@@ -45,9 +46,14 @@ void createImageGrid(QGridLayout *layout){
     int grid_size = 3;
     int grid_area = grid_size * grid_size;
 
+    std::vector<std::string> topics = setUpTopics();
+
     for(int i=0; i<grid_area; i++){
-        int randomIndex = rand() % allQURLs.size();
-        QUrl picURL = allQURLs[randomIndex];
+        std::string topic = selectTopic(topics);
+        QString html = GetHTML(topic);
+        std::vector<QString> imageAddresses = getImageAddresses(html);
+        int randomIndex = rand() % imageAddresses.size();
+        QString picURL = imageAddresses[randomIndex];
         QPushButton *button = createButton(picURL);
         int row = i % grid_size;
         int col = i / grid_size;
