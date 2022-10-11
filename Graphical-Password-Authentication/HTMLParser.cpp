@@ -34,7 +34,7 @@ QString GetHTML(std::string topic) {
 
 
     auto status = QObject::connect(webReply,SIGNAL(finished()),&loop,SLOT(quit()));
-    qDebug() << "Connection status:" << status;
+//    qDebug() << "Connection status:" << status;
     loop.exec();
 
     QString html = webReply->readAll();
