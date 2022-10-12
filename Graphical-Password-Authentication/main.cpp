@@ -32,10 +32,14 @@ void createImageGrid(QGridLayout *layout){
     int grid_area = grid_size * grid_size;
 
     std::vector<std::string> topics = setUpTopics();
+    std::vector<std::string> pickedTopics;
     for(int i=0; i<grid_area; i++){
         std::string topic = selectTopic(topics);
+        topics.pop_back();
+        pickedTopics.push_back(topic);
         QString html = GetHTML(topic);
 //        qDebug(html.toLatin1());
+        //gets multiple image urls per 1 topic that can be randomly selected
         std::vector<QString> imageAddresses = getImageAddresses(html);
         int randomIndex = rand() % imageAddresses.size();
         QString picURL = imageAddresses[randomIndex];
@@ -52,7 +56,7 @@ void createImageGrid(QGridLayout *layout){
     QLabel *statementLabel = new QLabel("Please select all pictures of: ");
     layout->addWidget(statementLabel,grid_size+1,0);
 
-    QString pickedTopic = QString::fromStdString(selectTopic(topics));
+    QString pickedTopic = QString::fromStdString(selectTopic(pickedTopics));
     QLabel *topicLabel = new QLabel();
     topicLabel->setText(pickedTopic);
     layout->addWidget(topicLabel,grid_size+1,1);

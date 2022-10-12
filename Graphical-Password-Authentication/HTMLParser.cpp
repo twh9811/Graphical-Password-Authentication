@@ -13,6 +13,26 @@ std::vector<std::string> setUpTopics() {
     topicVector.push_back("flower");
     topicVector.push_back("traffic light");
 
+    topicVector.push_back("muscle car");
+    topicVector.push_back("giraffe");
+    topicVector.push_back("mountain range");
+    topicVector.push_back("cell phone");
+
+    topicVector.push_back("pizza");
+    topicVector.push_back("hamburger");
+    topicVector.push_back("hotdog");
+    topicVector.push_back("cow");
+
+    topicVector.push_back("horse");
+    topicVector.push_back("bird");
+    topicVector.push_back("house");
+    topicVector.push_back("mouse");
+
+    topicVector.push_back("bike");
+    topicVector.push_back("computer");
+    topicVector.push_back("bread");
+    topicVector.push_back("corn");
+
     return topicVector;
 }
 
