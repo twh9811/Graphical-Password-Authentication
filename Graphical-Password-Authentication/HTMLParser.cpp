@@ -8,6 +8,8 @@
 
 std::vector<std::string> setUpTopics() {
     std::vector<std::string> topicVector;
+    QString topicHTML = GetHTML("", true);
+
     topicVector.push_back("cat");
     topicVector.push_back("dog");
     topicVector.push_back("flower");
@@ -43,15 +45,19 @@ std::string selectTopic(std::vector<std::string> topicVector) {
     return topic;
 }
 
-QString GetHTML(std::string topic) {
+QString GetHTML(std::string topic, bool isSetup = false) {
     QEventLoop loop;
     QNetworkAccessManager *webManager = new QNetworkAccessManager();
     QNetworkRequest webRequest;
-    QUrl urlRequest = QUrl(QString::fromStdString("https://www.google.com/search?q=" + topic + "&tbm=isch"));
+    QUrl urlRequest;
+    if(isSetup){
+        urlRequest = QUrl(QString::fromStdString("https://www.randomlists.com/topics?dup=false&qty=100"));
+    } else {
+        urlRequest = QUrl(QString::fromStdString("https://www.google.com/search?q=" + topic + "&tbm=isch"));
+    }
+
     webRequest.setUrl(urlRequest);
-
     QNetworkReply *webReply = webManager->get(webRequest);
-
 
     auto status = QObject::connect(webReply,SIGNAL(finished()),&loop,SLOT(quit()));
 //    qDebug() << "Connection status:" << status;
@@ -62,7 +68,7 @@ QString GetHTML(std::string topic) {
     return html;
 }
 
-std::vector<QString> getImageAddresses(QString html) {
+std::vector<QString> getImageAddresses(QString html, bool isSetup = false) {
     std::vector<QString> imageAddresses;
     int index = 0;
     while(index >= 0) {
