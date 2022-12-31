@@ -6,7 +6,6 @@
 #include <QString>
 
 QString GetHTML(QString topic, bool isSetup);
-QString GetHTML(QString topic);
 std::vector<QString> getImageAddresses(QString html);
 std::vector<QString> getImageAddresses(QString html, bool isSetup);
 std::vector<QString> setUpTopics();

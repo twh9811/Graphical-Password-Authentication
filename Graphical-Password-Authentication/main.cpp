@@ -37,8 +37,8 @@ void createImageGrid(QGridLayout *layout){
         QString topic = selectTopic(topics);
         topics.pop_back();
         pickedTopics.push_back(topic);
-        QString html = GetHTML(topic);
-//        qDebug(html.toLatin1());
+        QString html = GetHTML(topic, false);
+//        qDebug() << html.toLatin1();
         //gets multiple image urls per 1 topic that can be randomly selected
         std::vector<QString> imageAddresses = getImageAddresses(html);
         int randomIndex = rand() % imageAddresses.size();

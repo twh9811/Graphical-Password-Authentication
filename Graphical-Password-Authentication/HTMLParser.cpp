@@ -11,20 +11,19 @@ std::vector<QString> setUpTopics() {
 
     int index = 0;
     QString topicHTML = GetHTML("", true);
-    QString htmlTagStart = "<span class=\"rand_large\">";
-    QString htmlTagEnd = "</span>";
-    // if -1, not in string
-    while(index >= 0) {
-        //returns index of first character of tag, indicating there is a topic
-        index = topicHTML.indexOf(htmlTagStart, index);
-        //topic index starts right after the htmlTag
-        index = index + htmlTagStart.size();
-        int index2 = topicHTML.indexOf(htmlTagEnd, index);
-        QString topic = topicHTML.mid(index, index2-index);
-        topicVector.push_back(topic);
-        qDebug("%s", qUtf8Printable(topic));
-    }
-
+    qDebug() << topicHTML.toLatin1();
+//    QString htmlTagStart = "<span class=\"rand_large\">";
+//    QString htmlTagEnd = "</span>";
+//    // if -1, not in string
+//    while(index >= 0) {
+//        //returns index of first character of tag, indicating there is a topic
+//        index = topicHTML.indexOf(htmlTagStart, index);
+//        //topic index starts right after the htmlTag
+//        index = index + htmlTagStart.size();
+//        int index2 = topicHTML.indexOf(htmlTagEnd, index);
+//        QString topic = topicHTML.mid(index, index2-index);
+//        topicVector.push_back(topic);
+//    }
     return topicVector;
 }
 
@@ -35,15 +34,16 @@ QString selectTopic(std::vector<QString> topicVector) {
     return topic;
 }
 
-QString GetHTML(std::string topic, bool isSetup = false) {
+QString GetHTML(QString topic, bool isSetup = false) {
     QEventLoop loop;
     QNetworkAccessManager *webManager = new QNetworkAccessManager();
     QNetworkRequest webRequest;
     QUrl urlRequest;
     if(isSetup){
-        urlRequest = QUrl(QString::fromStdString("https://www.randomlists.com/topics?dup=false&qty=100"));
+        urlRequest = QUrl(QString::fromStdString("https://randomwordgenerator.com/"));
     } else {
-        urlRequest = QUrl(QString::fromStdString("https://www.google.com/search?q=" + topic + "&tbm=isch"));
+        std::string stdTopic = topic.toStdString();
+        urlRequest = QUrl(QString::fromStdString("https://www.google.com/search?q=" + stdTopic + "&tbm=isch"));
     }
 
     webRequest.setUrl(urlRequest);
