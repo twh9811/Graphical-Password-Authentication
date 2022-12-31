@@ -5,11 +5,11 @@
 #include <vector>
 #include <QString>
 
-QString GetHTML(std::string topic, bool isSetup);
-QString GetHTML(std::string topic);
+QString GetHTML(QString topic, bool isSetup);
+QString GetHTML(QString topic);
 std::vector<QString> getImageAddresses(QString html);
 std::vector<QString> getImageAddresses(QString html, bool isSetup);
-std::vector<std::string> setUpTopics();
-std::string selectTopic(std::vector<std::string> topicVector);
+std::vector<QString> setUpTopics();
+QString selectTopic(std::vector<QString> topicVector);
 
 #endif // HTMLPARSER_H

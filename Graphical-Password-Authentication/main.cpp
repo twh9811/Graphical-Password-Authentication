@@ -31,10 +31,10 @@ void createImageGrid(QGridLayout *layout){
     int grid_size = 3;
     int grid_area = grid_size * grid_size;
 
-    std::vector<std::string> topics = setUpTopics();
-    std::vector<std::string> pickedTopics;
+    std::vector<QString> topics = setUpTopics();
+    std::vector<QString> pickedTopics;
     for(int i=0; i<grid_area; i++){
-        std::string topic = selectTopic(topics);
+        QString topic = selectTopic(topics);
         topics.pop_back();
         pickedTopics.push_back(topic);
         QString html = GetHTML(topic);
@@ -56,7 +56,7 @@ void createImageGrid(QGridLayout *layout){
     QLabel *statementLabel = new QLabel("Please select all pictures of: ");
     layout->addWidget(statementLabel,grid_size+1,0);
 
-    QString pickedTopic = QString::fromStdString(selectTopic(pickedTopics));
+    QString pickedTopic = selectTopic(pickedTopics);
     QLabel *topicLabel = new QLabel();
     topicLabel->setText(pickedTopic);
     layout->addWidget(topicLabel,grid_size+1,1);

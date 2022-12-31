@@ -6,42 +6,32 @@
 #include <QUrl>
 #include <QEventLoop>
 
-std::vector<std::string> setUpTopics() {
-    std::vector<std::string> topicVector;
+std::vector<QString> setUpTopics() {
+    std::vector<QString> topicVector;
+
+    int index = 0;
     QString topicHTML = GetHTML("", true);
-
-    topicVector.push_back("cat");
-    topicVector.push_back("dog");
-    topicVector.push_back("flower");
-    topicVector.push_back("traffic light");
-
-    topicVector.push_back("muscle car");
-    topicVector.push_back("giraffe");
-    topicVector.push_back("mountain range");
-    topicVector.push_back("cell phone");
-
-    topicVector.push_back("pizza");
-    topicVector.push_back("hamburger");
-    topicVector.push_back("hotdog");
-    topicVector.push_back("cow");
-
-    topicVector.push_back("horse");
-    topicVector.push_back("bird");
-    topicVector.push_back("house");
-    topicVector.push_back("mouse");
-
-    topicVector.push_back("bike");
-    topicVector.push_back("computer");
-    topicVector.push_back("bread");
-    topicVector.push_back("corn");
+    QString htmlTagStart = "<span class=\"rand_large\">";
+    QString htmlTagEnd = "</span>";
+    // if -1, not in string
+    while(index >= 0) {
+        //returns index of first character of tag, indicating there is a topic
+        index = topicHTML.indexOf(htmlTagStart, index);
+        //topic index starts right after the htmlTag
+        index = index + htmlTagStart.size();
+        int index2 = topicHTML.indexOf(htmlTagEnd, index);
+        QString topic = topicHTML.mid(index, index2-index);
+        topicVector.push_back(topic);
+        qDebug("%s", qUtf8Printable(topic));
+    }
 
     return topicVector;
 }
 
-std::string selectTopic(std::vector<std::string> topicVector) {
+QString selectTopic(std::vector<QString> topicVector) {
     srand(time(NULL));
     int randomIndex = rand() % topicVector.size();
-    std::string topic = topicVector[randomIndex];
+    QString topic = topicVector[randomIndex];
     return topic;
 }
 
@@ -68,7 +58,7 @@ QString GetHTML(std::string topic, bool isSetup = false) {
     return html;
 }
 
-std::vector<QString> getImageAddresses(QString html, bool isSetup = false) {
+std::vector<QString> getImageAddresses(QString html) {
     std::vector<QString> imageAddresses;
     int index = 0;
     while(index >= 0) {
