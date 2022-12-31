@@ -8,22 +8,18 @@
 
 std::vector<QString> setUpTopics() {
     std::vector<QString> topicVector;
-
+    QString topic;
     int index = 0;
     QString topicHTML = GetHTML("", true);
-    qDebug() << topicHTML.toLatin1();
-//    QString htmlTagStart = "<span class=\"rand_large\">";
-//    QString htmlTagEnd = "</span>";
-//    // if -1, not in string
-//    while(index >= 0) {
-//        //returns index of first character of tag, indicating there is a topic
-//        index = topicHTML.indexOf(htmlTagStart, index);
-//        //topic index starts right after the htmlTag
-//        index = index + htmlTagStart.size();
-//        int index2 = topicHTML.indexOf(htmlTagEnd, index);
-//        QString topic = topicHTML.mid(index, index2-index);
-//        topicVector.push_back(topic);
-//    }
+//    qDebug() << topicHTML.toLatin1();
+    QStringList individualTopics = topicHTML.split(",");
+    for(int i =0; i<individualTopics.size(); i++) {
+        topic = individualTopics[i];
+        if(topic.size() != 0) {
+            topicVector.push_back(topic);
+//            qDebug() << topic.toLatin1();
+        }
+    }
     return topicVector;
 }
 
@@ -40,7 +36,7 @@ QString GetHTML(QString topic, bool isSetup = false) {
     QNetworkRequest webRequest;
     QUrl urlRequest;
     if(isSetup){
-        urlRequest = QUrl(QString::fromStdString("https://randomwordgenerator.com/"));
+        urlRequest = QUrl(QString::fromStdString("https://www.wordgenerator.net/application/p.php?id=charades_easy&type=1&spaceflag=false"));
     } else {
         std::string stdTopic = topic.toStdString();
         urlRequest = QUrl(QString::fromStdString("https://www.google.com/search?q=" + stdTopic + "&tbm=isch"));
