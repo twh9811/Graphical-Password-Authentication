@@ -72,7 +72,6 @@ QHash<QString, std::vector<QPushButton*>> createImageGrid(QGridLayout *layout){
 //            qDebug() << iterator.key() << iterator.value();
 //        }
 
-        return pickedTopicsAndButtons;
     }
 
     QPushButton *button = new QPushButton("Submit");
@@ -85,6 +84,8 @@ QHash<QString, std::vector<QPushButton*>> createImageGrid(QGridLayout *layout){
     QLabel *topicLabel = new QLabel();
     topicLabel->setText(pickedTopic);
     layout->addWidget(topicLabel,grid_size+1,1);
+
+    return pickedTopicsAndButtons;
 }
 
 int main(int argc, char *argv[])
