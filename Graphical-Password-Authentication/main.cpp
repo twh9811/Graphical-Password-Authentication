@@ -14,6 +14,7 @@
 #include <QGridLayout>
 #include <QtNetwork>
 #include <QLabel>
+#include <QHash>
 
 QPushButton* createButton(QUrl imageURL) {
     QPushButton *button = new QPushButton("");
@@ -26,7 +27,7 @@ QPushButton* createButton(QUrl imageURL) {
     return button;
 }
 
-void createImageGrid(QGridLayout *layout){
+QHash<QString, std::vector<QPushButton*>> createImageGrid(QGridLayout *layout){
     srand(time(NULL));
     int grid_size = 3;
     int grid_area = grid_size * grid_size;
@@ -34,26 +35,44 @@ void createImageGrid(QGridLayout *layout){
     std::vector<QString> topics = setUpTopics();
     std::vector<QString> pickedTopics;
 
+   QHash<QString, std::vector<QPushButton*>> pickedTopicsAndButtons;
+
     for(int i=0; i<grid_area;){
         QString topic = selectTopic(topics);
-        topics.pop_back();
         pickedTopics.push_back(topic);
         QString html = GetHTML(topic, false);
 //        qDebug() << html.toLatin1();
         //gets multiple image urls per 1 topic that can be randomly selected
         std::vector<QString> imageAddresses = getImageAddresses(html);
-        int max_images = 3;
-        for(int j=0; j< rand() % max_images; j++) {
+        //Bugged right now, if it goes any higher another button is added for some reason, 3 is highest it can be.
+        int max_topic_repeats = 3;
+        for(int j=0; j< rand() % max_topic_repeats; j++) {
             int randomIndex = rand() % imageAddresses.size();
             QString picURL = imageAddresses[randomIndex];
     //        qDebug(picURL.toLatin1());
             QPushButton *button = createButton(picURL);
+            if(pickedTopicsAndButtons[topic].size() != 0) {
+                std::vector<QPushButton*> currButtonList = pickedTopicsAndButtons[topic];
+                currButtonList.push_back(button);
+                pickedTopicsAndButtons[topic] = currButtonList;
+            } else {
+                std::vector<QPushButton*> newButtonList;
+                newButtonList.push_back(button);
+                pickedTopicsAndButtons[topic] = newButtonList;
+            }
             int row = i % grid_size;
             int col = i / grid_size;
             layout->addWidget(button, row, col);
             i++;
         }
 
+//        QHashIterator<QString, std::vector<QPushButton*>> iterator(pickedTopicsAndButtons);
+//        while(iterator.hasNext()) {
+//            iterator.next();
+//            qDebug() << iterator.key() << iterator.value();
+//        }
+
+        return pickedTopicsAndButtons;
     }
 
     QPushButton *button = new QPushButton("Submit");
