@@ -33,7 +33,8 @@ void createImageGrid(QGridLayout *layout){
 
     std::vector<QString> topics = setUpTopics();
     std::vector<QString> pickedTopics;
-    for(int i=0; i<grid_area; i++){
+
+    for(int i=0; i<grid_area;){
         QString topic = selectTopic(topics);
         topics.pop_back();
         pickedTopics.push_back(topic);
@@ -41,13 +42,18 @@ void createImageGrid(QGridLayout *layout){
 //        qDebug() << html.toLatin1();
         //gets multiple image urls per 1 topic that can be randomly selected
         std::vector<QString> imageAddresses = getImageAddresses(html);
-        int randomIndex = rand() % imageAddresses.size();
-        QString picURL = imageAddresses[randomIndex];
-//        qDebug(picURL.toLatin1());
-        QPushButton *button = createButton(picURL);
-        int row = i % grid_size;
-        int col = i / grid_size;
-        layout->addWidget(button, row, col);
+        int max_images = 3;
+        for(int j=0; j< rand() % max_images; j++) {
+            int randomIndex = rand() % imageAddresses.size();
+            QString picURL = imageAddresses[randomIndex];
+    //        qDebug(picURL.toLatin1());
+            QPushButton *button = createButton(picURL);
+            int row = i % grid_size;
+            int col = i / grid_size;
+            layout->addWidget(button, row, col);
+            i++;
+        }
+
     }
 
     QPushButton *button = new QPushButton("Submit");
